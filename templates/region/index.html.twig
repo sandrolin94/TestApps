@@ -1,0 +1,64 @@
+{% extends 'back/base.html.twig' %}
+
+{% block title %}Page Admin{% endblock %}
+{% block targetMenu %} Régions {% endblock %}
+
+{% block main %}
+    <div class="card-header">
+        <div class="card-title">Gestion de régions </div>
+    </div>
+  
+    
+        <div class="card-body">
+            <div class="row">
+               
+                    <div class="col-md-5">
+                     {{ form_start(formregions) }}
+                        <div class="form-group">
+                            <label > {{ form_label(formregions.code) }}</label>
+                            <div >
+                                {{ form_widget(formregions.code) }}
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label > {{ form_label(formregions.region) }}</label>
+                            <div >
+                                {{ form_widget(formregions.region) }}
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div >
+                                <input type="submit" value='Enregistrer' class="btn btn-info" />
+                                <input type='reset' value='Effacer' class="btn btn-secondary" />
+                            </div>
+                        </div>
+                         {{ form_end(formregions) }}
+                    </div>
+                 
+                    <div class="col-md-7">
+                        <table class="display table table-striped table-hover">
+                        <thead>
+                            <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Code</th>
+                            <th scope="col">Régions</th>
+                            <th scope="col">Action </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        {% for listregions in listsregions %}
+                            <tr>
+                                <td>{{ listregions.id }}</td>
+                                <td>{{ listregions.code }}</td>
+                                <td>{{ listregions.region }}</td>
+                                <td><a href="#">Modifier</a> | <a href="#">Supprimer</a></td>
+                            </tr>
+                        {% endfor %}
+                           
+                        </tbody>
+                        </table>
+                    </div>
+                </div>
+        </div>
+
+{% endblock %}
